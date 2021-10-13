@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIGHRADIUS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <div class="company">
+                <img src="vectors/Group 20399.svg" alt="highradius">
+            </div>
+            <div class="highradus">
+                <img src="vectors/logo.svg" alt="highradius">
+            </div>
+            <div>
+                <img src="vectors/logo.svg" alt="default" style="visibility: hidden;">
+            </div>
+        </div>
+        <div class="head">
+            Invoice List
+        </div>
+        <script src="script.js"></script>
+        <div class="inner">
+            <div class="invoice">
+                <div class="icons">
+                    <button onclick="togglePopupAdd()"> <div class="il">+</div> Add </button>
+                    <button onclick="togglePopupEdit()"><img src="">Edit</button>
+                    <button onclick="togglePopupDel()"> <div class="il">-</div> Delete </button>
+                    <form class="searchbar">
+                        <input type="text" placeholder="Search by Invoice Number" name="search">
+                        <button type="submit"><img src="vectors/Symbol 129 – 1.svg" alt="search"> </button>
+                    </form>
+                </div>
+                <div class="listin">
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="popup" id="popup-1">
+            <div class="overlay"></div>
+            <div class="content">
+              <div class="close-btn" onclick="togglePopupAdd()"><img class="close" src="/highradius/vectors/baseline-close-24px.svg" alt="close"></div>
+              <h1>Add Invoice</h1>               
+                <div class="row">
+                    <div class="tagwrap"><div class="tag">Customer Name</div> 
+                    <div class="req">*</div></div>
+                    <input type="text" name="customer_name" id="customer_name" class="blanks">
+                    <div class="tagwrap"><div class="tag">Due Date</div> 
+                    <div class="req">*</div></div>
+                    <input type="date" name="due_date" id="due_date" class="blanks">
+                </div>
+                <div class="row">
+                    <div class="tagwrap"><div class="tag">Customer No.</div> 
+                    <div class="req">*</div></div>
+                    <input type="text" name="customer_no" id="customer_no" class="blanks">
+                    <div class="tagwrap"><div class="tag">Notes</div> 
+                    </div>
+                    <textarea name="notes" id="notes" rows="10" cols="40"></textarea>
+                </div>
+                <div class="column">
+                    <div class="row">
+                    <div class="tagwrap"><div class="tag">Invoice No.</div> 
+                    <div class="req">*</div></div>
+                    <input type="text" name="invoice_no" id="invoice_no" class="blanks">
+                    </div>
+                    <div class="row">
+                    <div class="tagwrap"><div class="tag">Invoice Amount</div> 
+                    <div class="req">*</div></div>
+                    <input type="text" name="amt" id="amt" class="blanks">
+                    </div>
+                </div>
+                <div class="bottom">
+                    <button class="cancel" onclick="togglePopupAdd()">Cancel</button>
+                    <button class="clear" onclick="clearfield()">Clear</button>
+                    <button class="add" onclick="addinvoice()">Add</button>
+                </div>
+              </div>
+              </div>
+        </div>
+        
+        <div class="popup" id="popup-2">
+            <div class="overlay"></div>
+            <div class="content2">
+                <div class="close-btn" onclick="togglePopupEdit()"><img class="close" src="/highradius/vectors/baseline-close-24px.svg" alt="close"></div>
+                <h1>Edit Invoice</h1>
+                <div class="column">
+                    <div class="row">
+                        <div class="tagwrap"><div class="tag">Invoice Amount</div></div>
+                        <input type="text" name="amt" id="amt" class="blanks2">
+                    </div>
+                    <div class="row">
+                        <div class="tagwrap"><div class="tag">Notes</div></div>
+                        <textarea name="notes" id="notes" rows="10" cols="26"></textarea>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <button class="cancel" onclick="togglePopupEdit()">Cancel</button>
+                    <button class="reset" onclick="resetfield()">Reset</button>
+                    <button class="save" onclick="editinvoice()">Save</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="popup" id="popup-3">
+            <div class="overlay"></div>
+            <div class="content3">
+              <div class="close-btn" onclick="togglePopupDel()"><img class="close" src="/highradius/vectors/baseline-close-24px.svg" alt="close"></div>
+              <h3>Delete record(s)?</h3>
+              <div class="warn">
+                  <p>You'll lose your record(s) after this action. We can't recover them once you delete.</p>
+                  <p>Are you sure you want to <b>permanently delete</b> them?</p>
+              <div class="bottom">
+                <button class="canceldel" onclick="togglePopupDel()">Cancel</button>
+                <button class="delete" onclick="delinvoice()">Delete</button>
+            </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        -------@Designed_by_Abhishek Prasad_[H2HBABBA2250]-highradius-------
+    </footer>
+</body> 
+</html>
